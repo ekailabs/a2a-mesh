@@ -1,0 +1,49 @@
+{
+  "id": "a2a",
+  "activation": {
+    "onStartup": true
+  },
+  "name": "A2A Server",
+  "description": "Exposes the host OpenClaw agent as an A2A protocol server over JSON-RPC.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "default": true
+      },
+      "path": {
+        "type": "string",
+        "default": "/a2a",
+        "pattern": "^/"
+      },
+      "agent": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+      },
+      "cardName": { "type": "string" },
+      "cardDescription": { "type": "string" },
+      "cardVersion": { "type": "string" },
+      "cardUrl": { "type": "string" },
+      "advertiseBearerAuth": {
+        "type": "boolean",
+        "default": true
+      },
+      "allowedHosts": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "subagentTimeoutMs": {
+        "type": "integer",
+        "minimum": 6000,
+        "default": 180000
+      },
+      "maxTasks": {
+        "type": "integer",
+        "minimum": 1,
+        "default": 10000
+      }
+    }
+  }
+}
