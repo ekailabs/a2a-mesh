@@ -15,7 +15,7 @@ Each `SendMessage` spawns a one-shot OpenClaw subagent run against the configure
 
 ## Status
 
-**PoC v1.** One configured target agent per plugin instance · gateway auth on `POST /a2a` · public agent card · in-memory task store (FIFO-bounded by `maxTasks`, default 10000) · no streaming, push notifications, cancellation, or multi-turn continuity. The authoritative contract is [`docs/specs/2026-05-14-server-poc.md`](docs/specs/2026-05-14-server-poc.md).
+**PoC v1.** One configured target agent per plugin instance · gateway auth on `POST /a2a` · public agent card · in-memory task store (FIFO-bounded by `maxTasks`, default 10000) · no streaming, push notifications, cancellation, or multi-turn continuity. The developer contract starts at [`docs/dev/README.md`](docs/dev/README.md).
 
 ## Install
 
@@ -32,9 +32,9 @@ plugins:
       enabled: true
 ```
 
-Restart the gateway. The plugin emits two startup log lines confirming the registered routes; see [`docs/operations.md`](docs/operations.md) for the full set of startup and per-request log lines.
+Restart the gateway. The plugin emits two startup log lines confirming the registered routes; see [`docs/dev/03-proxy-spec.md`](docs/dev/03-proxy-spec.md) for the full set of startup and per-request log lines.
 
-For all available config fields, see [`docs/configuration.md`](docs/configuration.md).
+For a guided setup, see [`docs/quickstart.md`](docs/quickstart.md). For all available config fields, see [`docs/dev/03-proxy-spec.md`](docs/dev/03-proxy-spec.md).
 
 ## Smoke test
 
@@ -88,7 +88,7 @@ Then start OpenClaw with `OPENROUTER_API_KEY` set.
 
 ## Troubleshooting
 
-First-look gotchas; the full table is in [`docs/operations.md`](docs/operations.md#troubleshooting).
+First-look gotchas; the full table is in [`docs/dev/03-proxy-spec.md`](docs/dev/03-proxy-spec.md#troubleshooting).
 
 - `401 Unauthorized` on `POST /a2a`: send `Authorization: Bearer <gateway-token>`.
 - `Requested agent harness "codex" is not registered`: configure a model/runtime — see the OpenRouter snippet above for a working local setup.
@@ -97,10 +97,11 @@ First-look gotchas; the full table is in [`docs/operations.md`](docs/operations.
 
 ## Docs
 
-- [`docs/configuration.md`](docs/configuration.md) — config fields and YAML snippets.
-- [`docs/operations.md`](docs/operations.md) — security, logs, capacity, troubleshooting.
-- [`docs/client-guide.md`](docs/client-guide.md) — discovery, auth, `SendMessage`, `GetTask`, errors.
-- [`docs/specs/2026-05-14-server-poc.md`](docs/specs/2026-05-14-server-poc.md) — authoritative PoC v1 contract.
+- [`docs/README.md`](docs/README.md) — documentation landing page.
+- [`docs/quickstart.md`](docs/quickstart.md) — install, config, and smoke test guide.
+- [`docs/dev/README.md`](docs/dev/README.md) — developer/spec index.
+- [`docs/dev/01-protocol.md`](docs/dev/01-protocol.md) — protocol, task, error, and conformance contract.
+- [`docs/dev/02-client-spec.md`](docs/dev/02-client-spec.md) — discovery, auth, `SendMessage`, `GetTask`, errors.
 
 ## License
 
